@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+<style>
+    .background-div {
+        background-image: url('~/assets/images/big/auth-bg.jpg'); /* Resmin yolu */
+        background-size: cover; /* Resmi kaplayacak şekilde ayarla */
+        background-repeat: no-repeat; /* Resmin tekrar etmesini engelle */
+        height: 500px; /* Div'in yüksekliğini ayarla */
+        width: 100%; /* Div'in genişliğini ayarla */
+    }
+
+</style>
+
+<div class="auth-wrapper d-flex no-block justify-content-center background-div align-items-center">
+    <div class="auth-box">
+        <div id="loginform">
+            <div class="logo">
+                <span class="db"><img src="~/assets/images/logo-icon.png" alt="logo" /></span>
+                <h5 class="font-medium m-b-20">Sign In</h5>
+            </div>
+            <!-- Form -->
+            <div class="row">
+                <form class="col s12" action="Login" method="post">
+                    <!-- email -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="Username" name="Username" type="text" class="validate" required>
+                            <label for="Username">Username</label>
+                        </div>
+                    </div>
+                    <!-- pwd -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="Password" name="Password" type="password" class="validate" required>
+                            <label for="Password">Password</label>
+                        </div>
+                    </div>
+                    <!-- pwd -->
+                    <div class="row m-t-5">
+                        <div class="col s7">
+                            <label>
+                                <input type="checkbox" />
+                                <span>Remember Me?</span>
+                            </label>
+                        </div>
+                        <div class="col s5 right-align"><a href="#" class="link" id="to-recover">Forgot Pwd?</a></div>
+                    </div>
+                    <!-- pwd -->
+                    <div class="row m-t-40">
+                        <div class="col s12">
+                            <button class="btn-large w100 blue accent-4" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="center-align m-t-20 db">
+                Don't have an account? <a href="authentication-register1.html">Sign Up!</a>
+            </div>
+        </div>
+        <div id="recoverform">
+            <div class="logo">
+                <span class="db"><img src="~/assets/images/logo-icon.png" alt="logo" /></span>
+                <h5 class="font-medium m-b-20">Recover Password</h5>
+                <span>Enter your Email and instructions will be sent to you!</span>
+            </div>
+            <div class="row">
+                <!-- Form -->
+                <form class="col s12" action="index.html">
+                    <!-- email -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email1" type="email" class="validate" required>
+                            <label for="email1">Email</label>
+                        </div>
+                    </div>
+                    <!-- pwd -->
+                    <div class="row m-t-20">
+                        <div class="col s12">
+                            <button class="btn-large w100 red" type="submit" name="action">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

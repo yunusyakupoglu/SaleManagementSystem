@@ -1,0 +1,66 @@
+﻿.image-container {
+    position: relative;
+    width: 30px; /* Resmin genişliği */
+    height: 30px;
+}
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .img{
+        width: 30px;
+        height: 30px;
+    }
+
+.icn-td {
+    display: flex; /* Flexbox kullanarak içerikleri yatay hizala */
+    align-items: center; /* İçerikleri dikey olarak ortala */
+    justify-content: flex-start; /* İçerikleri baştan başlayarak sırala */
+    gap: 1px; /* Öğeler arasında 1px boşluk bırak */
+}
+
+.btn-extra-small {
+    width: 20px;
+    height: 20px;
+    padding: 0; /* İç boşluğu sıfırla */
+    display: flex; /* Flexbox kullanarak içerikleri hizala */
+    justify-content: center; /* İçerikleri yatay olarak ortala */
+    align-items: center; /* İçerikleri dikey olarak ortala */
+}
+
+    .btn-extra-small .icn {
+        font-size: 12px; /* İkon boyutunu ayarla */
+    }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border-bottom: 1px solid black;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.badges {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row-reverse; /* Sağdan sola doğru sıralama */
+    flex-wrap: wrap; /* İçerik aştığında yeni satıra geç */
+    gap: 5px; /* Badge'lar arasında biraz boşluk */
+    max-width: 100%; /* Konteyner genişliği resim genişliğiyle sınırlı */
+}
+

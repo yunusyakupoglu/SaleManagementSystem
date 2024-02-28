@@ -1,0 +1,344 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="page-titles">
+    <div class="d-flex align-items-center">
+        <h5 class="font-medium m-b-0">Carousel</h5>
+        <div class="custom-breadcrumb ml-auto">
+            <a href="#!" class="breadcrumb">Home</a>
+            <a href="#!" class="breadcrumb">Carousel</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Carousel</h5>
+                    <p>Our Carousel is a robust and versatile component that can be an image slider, to an item carousel, to an onboarding experience. It is touch enabled making it especially smooth to use on mobile.</p>
+                    <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
+                    <div class="carousel">
+                        <a class="carousel-item" href="#one!"><img src="../../assets/images/carousel/ca1.jpg" alt=""></a>
+                        <a class="carousel-item" href="#two!"><img src="../../assets/images/carousel/ca2.jpg" alt=""></a>
+                        <a class="carousel-item" href="#three!"><img src="../../assets/images/carousel/ca1.jpg" alt=""></a>
+                        <a class="carousel-item" href="#four!"><img src="../../assets/images/carousel/ca2.jpg" alt=""></a>
+                        <a class="carousel-item" href="#five!"><img src="../../assets/images/carousel/ca1.jpg" alt=""></a>
+                    </div>
+                    <pre>
+                    <code class="language-markup">
+                                        &lt;div class="carousel">
+                                            &lt;a class="carousel-item" href="#one!">&lt;img src="../../assets/images/carosel/ca1.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#two!">&lt;img src="../../assets/images/carosel/ca2.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#three!">&lt;img src="../../assets/images/carosel/ca1.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#four!">&lt;img src="../../assets/images/carosel/ca2.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#five!">&lt;img src="../../assets/images/carosel/ca1.jpg">&lt;/a>
+                                        &lt;/div>
+                                    </code>
+                                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Initialization</h5>
+                    <pre class="pre-scroll">
+                    <code class="language-javascript">
+                                        var elem = document.querySelector('.carousel');
+                                        var instance = M.Carousel.init(elem, options);
+
+                                        // Or with jQuery
+
+                                        $(document).ready(function(){
+                                            $('.carousel').carousel();
+                                        });
+                                    </code>
+                                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Options</h5>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>duration</td>
+                                <td>Number</td>
+                                <td>200</td>
+                                <td>Transition duration in milliseconds.</td>
+                            </tr>
+                            <tr>
+                                <td>dist</td>
+                                <td>Number</td>
+                                <td>-100</td>
+                                <td>Perspective zoom. If 0, all items are the same size.</td>
+                            </tr>
+                            <tr>
+                                <td>shift</td>
+                                <td>Number</td>
+                                <td>0</td>
+                                <td>Set the spacing of the center item.</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>Number</td>
+                                <td>0</td>
+                                <td>Set the padding between non center items.</td>
+                            </tr>
+                            <tr>
+                                <td>fullWidth</td>
+                                <td>Boolean</td>
+                                <td>false</td>
+                                <td>Make the carousel a full width slider like the second example.</td>
+                            </tr>
+                            <tr>
+                                <td>indicators</td>
+                                <td>Boolean</td>
+                                <td>false</td>
+                                <td>Set to true to show indicators.</td>
+                            </tr>
+                            <tr>
+                                <td>noWrap</td>
+                                <td>Boolean</td>
+                                <td>false</td>
+                                <td>Don't wrap around and cycle through items.</td>
+                            </tr>
+                            <tr>
+                                <td>onCycleTo</td>
+                                <td>Function</td>
+                                <td>null</td>
+                                <td>Callback for when a new slide is cycled to.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Methods</h5>
+                    <p>Because jQuery is no longer a dependency, all the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+                    <pre class="pre-scroll">
+                    <code class="language-javascript col s12">
+                                        var instance = M.Carousel.getInstance(elem);
+
+                                        /* jQuery Method Calls
+                                            You can still use the old jQuery plugin method calls.
+                                            But you won't be able to access instance properties.
+
+                                            $('.carousel').carousel('methodName');
+                                            $('.carousel').carousel('methodName', paramName);
+                                        */
+                                    </code>
+                                </pre>
+                    <h5 class="card-title">.next();</h5>
+                    <p>Move carousel to next slide or go forward a given amount of slides.</p>
+                    <p><b>Integer (optional):</b> How many times the carousel slides.</p>
+                    <pre>
+                    <code class="language-javascript col s12">
+                                        instance.next();
+                                        instance.next(3); // Move next n times.
+                                    </code>
+                                </pre>
+                    <h5 class="card-title">.prev();</h5>
+                    <p>Move carousel to previous slide or go back a given amount of slides.</p>
+                    <p><b>Integer (optional):</b> How many times the carousel slides.</p>
+                    <pre>
+                    <code class="language-javascript col s12">
+                                        instance.prev();
+                                        instance.prev(3); // Move previous n times.
+                                    </code>
+                                </pre>
+                    <h5 class="card-title">.set();</h5>
+                    <p>Move carousel to nth slide</p>
+                    <p><b>Integer:</b> Index of slide.</p>
+                    <pre>
+                    <code class="language-javascript col s12">
+                                        instance.set();
+                                        instance.set(3); // Set to nth slide.
+                                    </code>
+                                </pre>
+                    <h5 class="card-title">.destroy();</h5>
+                    <p>Destroy plugin instance and teardown</p>
+                    <pre>
+                    <code class="language-javascript col s12">
+                                        instance.destroy();
+                                    </code>
+                                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Properties</h5>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>el</td>
+                                <td>Element</td>
+                                <td>The DOM element the plugin was initialized with.</td>
+                            </tr>
+                            <tr>
+                                <td>options</td>
+                                <td>Object</td>
+                                <td>The options the instance was initialized with.</td>
+                            </tr>
+                            <tr>
+                                <td>pressed</td>
+                                <td>Boolean</td>
+                                <td>If the carousel is being clicked or tapped.</td>
+                            </tr>
+                            <tr>
+                                <td>dragged</td>
+                                <td>Boolean</td>
+                                <td>If the carousel is currently being dragged.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Full Width Slider</h5>
+                    <p>Our carousel has a full width option that makes it into a simple and elegant image carousel. You can also have indicators that show up on the bottom of the slider. </p>
+                    <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
+                    <div class="carousel carousel-slider">
+                        <a class="carousel-item" href="#one!"><img src="../../assets/images/carousel/1.jpg" alt=""></a>
+                        <a class="carousel-item" href="#two!"><img src="../../assets/images/carousel/2.jpg" alt=""></a>
+                        <a class="carousel-item" href="#three!"><img src="../../assets/images/carousel/3.jpg" alt=""></a>
+                        <a class="carousel-item" href="#four!"><img src="../../assets/images/carousel/4.jpg" alt=""></a>
+                    </div>
+                    <pre class="pre-scroll">
+                    <code class="language-markup">
+                                        &lt;div class="carousel carousel-slider">
+                                            &lt;a class="carousel-item" href="#one!">&lt;img src="../../assets/images/carousel/1.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#two!">&lt;img src="../../assets/images/carousel/2.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#three!">&lt;img src="../../assets/images/carousel/3.jpg">&lt;/a>
+                                            &lt;a class="carousel-item" href="#four!">&lt;img src="../../assets/images/carousel/4.jpg">&lt;/a>
+                                        &lt;/div>
+                                    </code>
+                                </pre>
+                    <pre class="pre-scroll">
+                    <code class="language-javascript">
+                                        var instance = M.Carousel.init({
+                                            fullWidth: true
+                                        });
+
+                                        // Or with jQuery
+
+                                        $('.carousel.carousel-slider').carousel({
+                                            fullWidth: true
+                                        });
+                                    </code>
+                                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Special Options</h5>
+                    <p>The carousel doesn't only support images but also allows you to make content carousels. You can add fixed items to your carousel by adding a div with the class <code>carousel-fixed-item</code> and adding your fixed content in there.</p>
+                    <p>Note: This is also touch compatible! Try swiping with your finger to scroll through the carousel.</p>
+                    <div class="carousel carousel-slider center">
+                        <div class="carousel-fixed-item center">
+                            <a class="btn waves-effect white grey-text darken-text-2">button</a>
+                        </div>
+                        <div class="carousel-item red white-text" href="#one!">
+                            <h2>First Panel</h2>
+                            <p class="white-text">This is your first panel</p>
+                        </div>
+                        <div class="carousel-item amber white-text" href="#two!">
+                            <h2>Second Panel</h2>
+                            <p class="white-text">This is your second panel</p>
+                        </div>
+                        <div class="carousel-item green white-text" href="#three!">
+                            <h2>Third Panel</h2>
+                            <p class="white-text">This is your third panel</p>
+                        </div>
+                        <div class="carousel-item blue white-text" href="#four!">
+                            <h2>Fourth Panel</h2>
+                            <p class="white-text">This is your fourth panel</p>
+                        </div>
+                    </div>
+                    <pre class="pre-scroll">
+                    <code class="language-markup">
+                                        &lt;div class="carousel carousel-slider center">
+                                            &lt;div class="carousel-fixed-item center">
+                                                &lt;a class="btn waves-effect white grey-text darken-text-2">button&lt;/a>
+                                            &lt;/div>
+                                            &lt;div class="carousel-item red white-text" href="#one!">
+                                                &lt;h2>First Panel&lt;/h2>
+                                                &lt;p class="white-text">This is your first panel&lt;/p>
+                                            &lt;/div>
+                                            &lt;div class="carousel-item amber white-text" href="#two!">
+                                                &lt;h2>Second Panel&lt;/h2>
+                                                &lt;p class="white-text">This is your second panel&lt;/p>
+                                            &lt;/div>
+                                            &lt;div class="carousel-item green white-text" href="#three!">
+                                                &lt;h2>Third Panel&lt;/h2>
+                                                &lt;p class="white-text">This is your third panel&lt;/p>
+                                            &lt;/div>
+                                            &lt;div class="carousel-item blue white-text" href="#four!">
+                                                &lt;h2>Fourth Panel&lt;/h2>
+                                                &lt;p class="white-text">This is your fourth panel&lt;/p>
+                                            &lt;/div>
+                                        &lt;/div>
+                                    </code>
+                                </pre>
+                    <pre class="pre-scroll">
+                    <code class="language-javascript">
+                                        var instance = M.Carousel.init({
+                                            fullWidth: true,
+                                            indicators: true
+                                        });
+
+                                        // Or with jQuery
+
+                                        $('.carousel.carousel-slider').carousel({
+                                            fullWidth: true,
+                                            indicators: true
+                                        });
+                                    </code>
+                                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

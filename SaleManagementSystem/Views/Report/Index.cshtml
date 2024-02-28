@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Data.Models.Project.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.ProductName</td>
+        <td>@item.SellPrice</td>
+        <td>@item.Brand</td>
+    </tr>
+    }
+
+</table>

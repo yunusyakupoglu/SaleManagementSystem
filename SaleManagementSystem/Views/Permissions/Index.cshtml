@@ -1,0 +1,171 @@
+﻿@model IEnumerable<Data.Models.Permission>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Yetkiler</h4>
+                    <h6 class="card-subtitle"></h6>
+                    <div class="table-responsive">
+                        <table id="listContainer" class="table m-t-10 highlight contact-list" data-page-size="10">
+                            <thead>
+                                <tr>
+                                    <th>Insert</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>View</th>
+                                    <th>Active</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.CanInsert</td>
+                                        <td>@item.CanEdit</td>
+                                        <td>@item.CanDelete</td>
+                                        <td>@item.CanView</td>
+                                        <td>@item.IsActive</td>
+                                        <td>
+                                            <button type="button" class="btn btn-small delete-row-btn"><i class="ti-close" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <a href="#add-permission" class="waves-effect waves-light btn modal-trigger">Yetki Ekle</a>
+                                    </td>
+                                    <div id="add-permission" class="modal">
+                                        <div class="modal-content">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="input-field col s12 m12">
+                                                        <label for="CategoryId">Kullanıcı</label>
+                                                        @Html.DropDownList("selectedUser", new SelectList(ViewBag.Users, "Guid", "Username"), "Bir Kullanıcı Seçiniz", new { id = "userDropdown" })
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col s3 m3">
+                                                        <label>
+                                                            <input id="CanView" type="checkbox" />
+                                                            <span>View</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="input-field col s3 m3">
+<label><input id="CanInsert" type="checkbox" /><span>Insert</span></label>
+                                                    </div>
+                                                    <div class="input-field col s3 m3">
+                                                        <label>
+                                                            <input id="CanEdit" type="checkbox" />
+                                                            <span>Edit</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="input-field col s3 m3">
+                                                        <label>
+                                                            <input id="CanDelete" type="checkbox" />
+                                                            <span>Delete</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" onclick="insert()" class="btn modal-action modal-close waves-effect waves-light cyan">Save</a>
+                                            <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey darken-4">Cancel</a>
+                                        </div>
+                                    </div>
+                                    <td colspan="7">
+                                        <div class="text-right">
+                                            <ul class="pagination"> </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+function refreshList() {
+    $.ajax({
+        url: '@Url.Action("Refresh", "Permissions")',
+        type: 'GET',
+        success: function (response) {
+            if (response && response.data) {
+                var tableBody = $('#listContainer tbody');
+                tableBody.empty(); // Mevcut içeriği temizle
+
+                response.data.forEach(function(item) {
+                    var row = `<tr>
+                                   <td>${item.CanInsert}</td>
+                                   <td>${item.CanEdit}</td>
+                                   <td>${item.CanDelete}</td>
+                                   <td>${item.CanView}</td>
+                                   <td>${item.IsActive}</td>
+                                   <td>
+                                       <button type="button" class="btn btn-small delete-row-btn">
+                                           <i class="ti-close" aria-hidden="true"></i>
+                                       </button>
+                                   </td>
+                               </tr>`;
+                    tableBody.append(row);
+                });
+            } else {
+                console.error("Liste yenilenirken veri alınamadı.");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Liste yenilenirken hata oluştu: " + error);
+        }
+    });
+    }
+
+    function insert() {
+        var canView = document.getElementById('CanView').checked;
+        var canInsert = document.getElementById('CanInsert').checked;
+        var canEdit = document.getElementById('CanEdit').checked;
+        var canDelete = document.getElementById('CanDelete').checked;
+        var selectedValue = document.getElementById('userDropdown').value;
+
+        $.ajax({
+            url: '@Url.Action("Insert", "Permissions")',
+            type: 'POST',
+            data: { view: canView, insert: canInsert, edit: canEdit, delete: canDelete, userGuid: selectedValue },
+            success: function (response) {
+                console.log(response, "resp");
+                if (response.success) {
+                    swal({
+                        title: "Başarılı!",
+                        text: response.message,
+                        type: "success", // 'icon' yerine 'type' kullanılıyor
+                        timer: 3000,
+                        onClose: () => { // 'willClose' yerine 'onClose' kullanılıyor
+                            refreshList();
+                        }
+                    });
+                } else {
+                    swal("Hata!", "Bir hata oluştu: " + response.message, "error");
+                }
+            },
+            error: function (xhr, status, error) {
+                swal("Hata!", "Sunucu ile iletişim kurulamadı: " + error, "error");
+            }
+        });
+    }
+</script>

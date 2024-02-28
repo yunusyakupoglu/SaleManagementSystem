@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Site/ticket.js"></script>
+<script src="~/Scripts/Site/ticket-paginate.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Firma Bilgileri</h4>
+                    <h6 class="card-subtitle">Lütfen firma seçiniz</h6>
+                    <div class="row">
+                        <div class="input-field col s12 m12">
+                            @*<a href="#add-company" onclick="paginateCompany()" class="waves-effect waves-light btn modal-trigger">Firma Seç</a>*@
+                            <a href="#add-company" class="waves-effect waves-light btn modal-trigger">Firma Seç</a>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <div class="input-field">
+                                <input id="companyName" placeholder="Firma Adı" type="text">
+                            </div>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <div class="input-field">
+                                <input id="taxNumber" placeholder="VKN" type="text">
+                            </div>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <div class="input-field">
+                                <input id="taxOffice" placeholder="Vergi Dairesi" type="text">
+                            </div>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <div class="input-field">
+                                <input id="email" placeholder="E-Posta" type="email">
+                            </div>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <div class="input-field">
+                                <input id="phone" placeholder="Telefon Numarası" type="tel">
+                            </div>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <div class="input-field">
+                                <input id="address" placeholder="Adres" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Ürünler</h4>
+                    <h6 class="card-subtitle">Lütfen ürün seçiniz.</h6>
+                    <div class="row">
+                        <div class="input-field col s12 m12">
+                            <a href="#add-stock" class="waves-effect waves-light btn modal-trigger">Ürün Ekle</a>
+                            @*<a href="#add-stock" onclick="paginateStock()" class="waves-effect waves-light btn modal-trigger">Ürün Ekle</a>*@
+                        </div>
+                    </div>
+                    <table class="striped" id="selectedStocks">
+                        <thead>
+                            <tr>
+                                <th>Dosya</th>
+                                <th>Ürün</th>
+                                <th>Miktar</th>
+                                <th>Birim</th>
+                                <th>Fiyat</th>
+                                <th>Kdv</th>
+                                <th>İsk. (%)</th>
+                                <th>Toplam Tutar</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="selectedStockList"></tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s8" style="float: left;">
+            <div class="card">
+                <div class="card-content">
+                    <table class="" id="">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="col s4" style="float: right;">
+            <div class="card">
+                <div class="card-content">
+                    <table class="" id="">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Toplam(₺):</td>
+                                <td style="float: right;" id="total"></td>
+                            </tr>
+                            <tr>
+                                <td>Toplam İndirim(₺):</td>
+                                <td style="float: right;" id="totalDiscount"></td>
+                            </tr>
+                            <tr>
+                                <td>Ara Toplam(₺):</td>
+                                <td style="float: right;" id="subTotalValue"></td>
+                            </tr>
+                            <tr>
+                                <td>Toplam Kdv:</td>
+                                <td style="float: right;" id="totalVAT"></td>
+                            </tr>
+                            <tr>
+                                <td>Net Toplam:</td>
+                                <td style="float: right;" id="netTotal"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 m6 left-align">
+            <a href="/Ticket/Index" class="waves-effect waves-light btn">Sipariş fişlerine dön</a>
+        </div>
+        <div class="input-field col s6 m6 right-align">
+            <a href="#!" onclick="insertTicket()" class="waves-effect waves-light btn">Fişi Kaydet</a>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="add-company" class="modal" style="width:80% !important; height:80% !important">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="input-field">
+                    <input id="search" type="search" placeholder="ara">
+                    <i class="material-icons prefix">search</i>
+                </div>
+            </div>
+        </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Firma Kodu/Cari Kodu</th>
+                    <th>Firma Adı</th>
+                    <th>VKN</th>
+                    <th>Adres</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody id="listContainer"></tbody>
+        </table>
+
+        <div class="row" style="margin-top:30px">
+            <div class="col s4 m4 left-align">
+                <p id="listCount"></p>
+            </div>
+            <div class="col s4 m4 center-align">
+                <ul class="pagination" id="paginationCompany">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
+            </div>
+            <div class="col s4 m4 right-align">
+                <p id="totalDataCount"></p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" style="position: fixed; bottom: 0; width: 100%;">
+        <a href="#!" class="btn modal-action modal-close waves-effect waves-light red darken-4">Cancel</a>
+    </div>
+</div>
+
+
+
+<div id="add-stock" class="modal" style="width:60% !important; height:70% !important">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="input-field">
+                    <input id="searchStock" type="search" placeholder="ara">
+                    <i class="material-icons prefix">search</i>
+                </div>
+            </div>
+        </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dosya</th>
+                    <th>Ürün</th>
+                    <th>Seç</th>
+                </tr>
+            </thead>
+            <tbody id="listContainerStock"></tbody>
+        </table>
+
+        <div class="row" style="margin-top:30px">
+            <div class="col s4 m4 left-align">
+                <p id="listCountStock"></p>
+            </div>
+            <div class="col s4 m4 center-align">
+                <ul class="pagination" id="paginationStock">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
+            </div>
+            <div class="col s4 m4 right-align">
+                <p id="totalStockDataCount"></p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" style="position: fixed; bottom: 0; width: 100%;">
+        <a href="#!" class="btn modal-action modal-close waves-effect waves-light red darken-4">Cancel</a>
+        <a href="#!" class="btn modal-action modal-close waves-effect waves-light blue darken-4" onclick="Confirm()">Confirm</a>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
