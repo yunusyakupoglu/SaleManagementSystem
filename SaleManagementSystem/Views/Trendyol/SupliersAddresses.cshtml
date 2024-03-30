@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "SupliersAddresses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Site/Trendyol/suplier-addresses.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s3 m3 left-align">
+                            <!-- Buton ve Select kutusunu aynı satırda tutmak için iç içe div kullanımı -->
+                            <div class="row">
+                                <div class="col s6">
+                                    <select id="paginator-select" onchange="paginate()">
+                                        <option value="" disabled>Kayıt sayısı</option>
+                                        <option value="5" selected>5</option>
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        <option value="500">500</option>
+                                        <option value="1000">1000</option>
+                                    </select>
+                                </div>
+                                <div class="col s3 m3 right-align">
+                                    <div class="input-field">
+                                        <input id="pageNumber" type="number" onchange="paginate()" placeholder="Sayfa numarası">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6 m6 center-align"></div>
+                        <div class="col s3 m3 right-align">
+                            <div class="input-field">
+                                <input id="search" type="search" placeholder="ara">
+                                <i class="material-icons prefix">search</i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Marka Adı</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listContainer"></tbody>
+                    </table>
+
+                    <div class="row" style="margin-top:30px">
+                        <div class="col s4 m4 left-align">
+                            <p id="listCount"></p>
+                        </div>
+                        <div class="col s4 m4 center-align">
+                            <ul class="pagination">
+                                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                <li class="active"><a href="#!">1</a></li>
+                                <li class="waves-effect"><a href="#!">2</a></li>
+                                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col s4 m4 right-align">
+                            <p id="totalDataCount"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 ﻿using Data.IServices;
+using Data.IServices.Integrators;
 using Data.Services;
+using Data.Services.Integrators;
 using SaleManagementSystem.Common;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -36,6 +38,8 @@ namespace SaleManagementSystem
             container.RegisterType<ICompanyService, CompanyService>();
             container.RegisterType<ITicketService, TicketService>();
             container.RegisterType<ITicketProductService, TicketProductService>();
+            container.RegisterType<ITrendyolService, TrendyolService>();
+            container.RegisterType<ICargoService, CargoService>();
 
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

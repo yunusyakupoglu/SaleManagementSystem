@@ -50,6 +50,8 @@ namespace Data.Models.api
         public int Version { get; set; }
         public bool Rejected { get; set; }
         public List<RejectReasonDetailObject> RejectReasonDetails { get; set; }
+        public string ProductUrl { get; set; }
+        public DeliveryOptions DeliveryOptions { get; set; }
         public bool Blacklisted { get; set; }
 
         public DateTime ConvertToDate(string dateString)
@@ -72,6 +74,12 @@ namespace Data.Models.api
         public string AttributeName { get; set; }
         public string AttributeValue { get; set; }
         public int AttributeValueId { get; set; }
+    }
+
+    public class DeliveryOptions
+    {
+        public int DeliveryDuration { get; set; }
+        public string FastDeliveryType { get; set; }
     }
 
     public class ImageObject

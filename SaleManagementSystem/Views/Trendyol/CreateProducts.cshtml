@@ -1,0 +1,314 @@
+﻿
+@{
+    ViewBag.Title = "CreateProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #dropdownContent {
+        display: none;
+        position: absolute; /* Pozisyonu mutlak yapın */
+        top: 100%; /* Input'un hemen altında başlasın */
+        left: 0;
+        width: 100%; /* Parent div ile aynı genişlik */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: white; /* Arka planı belirginleştir */
+        z-index: 1000; /* Üst üste gelme sırasını en üste çıkar */
+    }
+
+        /* Kategori ögeleri için stiller */
+        #dropdownContent div {
+            padding: 8px 10px;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+            #dropdownContent div:hover {
+                background-color: #e9e9e9;
+            }
+
+    /* Geri düğmesi için stiller */
+    button {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    #brandDropdownContent {
+        display: none;
+        position: absolute; /* Pozisyonu mutlak yapın */
+        top: 100%; /* Input'un hemen altında başlasın */
+        left: 0;
+        width: 100%; /* Parent div ile aynı genişlik */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: white; /* Arka planı belirginleştir */
+        z-index: 1000; /* Üst üste gelme sırasını en üste çıkar */
+    }
+
+        /* Kategori ögeleri için stiller */
+        #brandDropdownContent div {
+            padding: 8px 10px;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+            #brandDropdownContent div:hover {
+                background-color: #e9e9e9;
+            }
+
+    #cargoDropdownContent {
+        display: none;
+        position: absolute; /* Pozisyonu mutlak yapın */
+        top: 100%; /* Input'un hemen altında başlasın */
+        left: 0;
+        width: 100%; /* Parent div ile aynı genişlik */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: white; /* Arka planı belirginleştir */
+        z-index: 1000; /* Üst üste gelme sırasını en üste çıkar */
+    }
+
+        /* Kategori ögeleri için stiller */
+        #cargoDropdownContent div {
+            padding: 8px 10px;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+            #cargoDropdownContent div:hover {
+                background-color: #e9e9e9;
+            }
+
+
+    .preview-img {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        position: relative;
+        display: inline-block;
+    }
+
+        .preview-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .remove-img {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        cursor: pointer;
+        color: red;
+        background-color: white;
+        border-radius: 50%;
+    }
+
+    .my-collapse-features {
+        height: 5px;
+    }
+
+        .my-collapse-features > p {
+            margin-top: -10px !important; /* 1px yukarı taşı */
+        }
+
+    .required-attribute {
+        background-color: #F1948A;
+        color: white;
+    }
+
+    .required-attribute-body {
+        background-color: #FADBD8;
+    }
+
+</style>
+
+<div class="row">
+    <div class="col s12 m8">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col m4 s12">
+                                <div class="input-field" id="dropdown-container">
+                                    <input type="text" id="searchInput" placeholder="Kategori seçiniz..." required>
+                                    <div id="dropdownContent"></div>
+                                </div>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class="input-field" id="dropdown-container">
+                                    <input type="text" id="searchBrandInput" placeholder="Marka Seçiniz..." required>
+                                    <div id="brandDropdownContent"></div>
+                                </div>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class="input-field">
+                                    <input id="productMainId" placeholder="Ana Ürün Kodu" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class="input-field">
+                                    <input id="currencyType" placeholder="Para Birimi" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class="input-field" id="dropdown-container">
+                                    <input type="text" id="searchCargoInput" placeholder="Kargo firması seçiniz..." required>
+                                    <div id="cargoDropdownContent"></div>
+                                </div>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class="input-field">
+                                    <select id="deliveryOption">
+                                        <option value="SAME_DAY_SHIPPING" selected>Aynı Gün Kargo</option>
+                                        <option value="FAST_DELIVERY">Hızlı Teslimat</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col m3 s12">
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input id="barcode" placeholder="Barkod" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col s2">
+                                    <button style="margin-bottom:0; padding-bottom: 0;" class="waves-effect waves-light btn btn-extra-small modal-trigger" onclick="generateRandomBarcode()"><i class="icn ti-pencil-alt" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class="input-field">
+                                    <input id="title" placeholder="Ürün Başlığı" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m2 s12">
+                                <div class="input-field">
+                                    <input id="quantity" placeholder="Miktar" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m3 s12">
+                                <div class="input-field">
+                                    <input id="stockCode" placeholder="Stok Kodu" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m3 s12">
+                                <div class="input-field">
+                                    <input id="dimensionalWeight" placeholder="Desi" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m3 s12">
+                                <div class="input-field">
+                                    <input id="listPrice" placeholder="Liste Fiyatı" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m3 s12">
+                                <div class="input-field">
+                                    <input id="salePrice" placeholder="Satış Fiyatı" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col m3 s12">
+                                <div class="input-field">
+                                    <select id="vatRate" required>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <textarea id="description" placeholder="Ürün Açıklaması" class="materialize-textarea" data-length="120" required></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="file-field input-field">
+                            <div class="btn blue darken-1">
+                                <span>File</span>
+                                <input type="file" id="file-input" multiple required>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                            </div>
+                        </div>
+                        <div class="preview-img-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content">
+                <h5>Ürün Özellikleri</h5>
+                <ul class="collapsible" id="collapsible-category-attributes"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <button onclick="createProducts()" style="padding-bottom:10px; margin-bottom:10px;">Gönder</button>
+    </div>
+</div>
+
+
+
+
+<script src="~/Scripts/Site/Trendyol/create-product.js"></script>

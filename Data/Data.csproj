@@ -46,6 +46,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.110.2.0\lib\net471\RestSharp.dll</HintPath>
     </Reference>
@@ -62,6 +65,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -94,12 +100,15 @@
     <Compile Include="Common\PasswordHasher.cs" />
     <Compile Include="Common\PermissionEnum.cs" />
     <Compile Include="Common\UnixDateTimeConverter.cs" />
+    <Compile Include="IServices\AuthApi\IIntegratorUserAuthService.cs" />
     <Compile Include="IServices\IAccountService.cs" />
     <Compile Include="IServices\IBrandService.cs" />
+    <Compile Include="IServices\ICargoService.cs" />
     <Compile Include="IServices\ICategoryService.cs" />
     <Compile Include="IServices\ICompanyService.cs" />
     <Compile Include="IServices\IIntegratorService.cs" />
     <Compile Include="IServices\Integrators\IFakeStoreService.cs" />
+    <Compile Include="IServices\Integrators\IIntegratorAuthService.cs" />
     <Compile Include="IServices\Integrators\ITrendyolService.cs" />
     <Compile Include="IServices\IPermissionService.cs" />
     <Compile Include="IServices\IProductService.cs" />
@@ -111,13 +120,23 @@
     <Compile Include="IServices\IUnitService.cs" />
     <Compile Include="IServices\IUserService.cs" />
     <Compile Include="Models\api\ApiProduct.cs" />
+    <Compile Include="Models\api\ApiProductPostObject.cs" />
+    <Compile Include="Models\api\ApiProductPutObject.cs" />
     <Compile Include="Models\api\ApiRating.cs" />
+    <Compile Include="Models\api\ApiResponse.cs" />
+    <Compile Include="Models\api\ApiResponseModel.cs" />
     <Compile Include="Models\api\ApiTrendyolGetObject.cs" />
+    <Compile Include="Models\api\Cargo.cs" />
+    <Compile Include="Models\api\LoginModel.cs" />
+    <Compile Include="Models\api\StockInventoryRequest.cs" />
+    <Compile Include="Models\api\AuthToken.cs" />
     <Compile Include="Models\Dto\ProductDto.cs" />
     <Compile Include="Models\Dto\ProductWithTags.cs" />
     <Compile Include="Models\Dto\StockDto.cs" />
     <Compile Include="Models\Dto\TicketProductResult.cs" />
     <Compile Include="Models\Dto\TicketView.cs" />
+    <Compile Include="Models\IntegratorUser.cs" />
+    <Compile Include="Models\Project\Auth.cs" />
     <Compile Include="Models\Project\Brand.cs" />
     <Compile Include="Models\CheckAuthEntities.cs" />
     <Compile Include="Models\Login.cs" />
@@ -129,16 +148,20 @@
     <Compile Include="Models\Project\Tag.cs" />
     <Compile Include="Models\Project\Ticket.cs" />
     <Compile Include="Models\Project\TicketProduct.cs" />
+    <Compile Include="Models\Project\TrendyolCategory.cs" />
     <Compile Include="Models\Project\Unit.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AuthApi\IntegratorUserAuthService.cs" />
     <Compile Include="Services\BrandService.cs" />
+    <Compile Include="Services\CargoService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\CompanyService.cs" />
     <Compile Include="Services\IntegratorService.cs" />
     <Compile Include="Services\Integrators\FakeStoreService.cs" />
+    <Compile Include="Services\Integrators\IntegratorAuthService.cs" />
     <Compile Include="Services\Integrators\TrendyolService.cs" />
     <Compile Include="Services\PermissionService.cs" />
     <Compile Include="Services\ProductService.cs" />

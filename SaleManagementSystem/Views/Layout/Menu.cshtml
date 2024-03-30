@@ -272,38 +272,35 @@
                                 <div class="collapsible-body">
                                     <ul class="collapsible" data-collapsible="accordion">
                                         <li>
-                                            <a class="collapsible-header has-arrow">
-                                                <i class="material-icons">looks_3</i>
-                                                <span class="hide-menu">Markalar</span>
+                                            <a href="@Url.Action("Index", "Cargo")">
+                                                <span class="hide-menu">Kargo Firma Listesi</span>
                                             </a>
-                                            <div class="collapsible-body">
-                                                <ul class="collapsible" data-collapsible="accordion">
-                                                    <li>
-                                                        <a href="@Url.Action("Index", "Trendyol")">
-                                                            <i class="material-icons">grade</i>
-                                                            <span class="hide-menu">Marka Listesi</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                         </li>
                                         <li>
-                                            <a class="collapsible-header has-arrow">
-                                                <i class="material-icons">looks_3</i>
-                                                <span class="hide-menu">Ürünler</span>
+                                            <a href="@Url.Action("SupliersAddresses", "Trendyol")">
+                                                <span class="hide-menu">İade Ve Sevkiyat Adres Bilgileri</span>
                                             </a>
-                                            <div class="collapsible-body">
-                                                <ul class="collapsible" data-collapsible="accordion">
-                                                    <li>
-                                                        <a href="@Url.Action("Products", "Trendyol")">
-                                                            <i class="material-icons">grade</i>
-                                                            <span class="hide-menu">Ürün Listesi</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                         </li>
-
+                                        <li>
+                                            <a href="@Url.Action("Brands", "Trendyol")">
+                                                <span class="hide-menu">Marka Listesi</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ProductCategories", "Trendyol")">
+                                                <span class="hide-menu">Kategori Listesi</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Products", "Trendyol")">
+                                                <span class="hide-menu">Ürün Listesi</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CreateProducts", "Trendyol")">
+                                                <span class="hide-menu">Ürün Ekle</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

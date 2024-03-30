@@ -138,10 +138,13 @@
     <Compile Include="Common\CheckUserAndRoleFilter.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
+    <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\FakeStoreController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntegratorAuthController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -155,6 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JsonCategory.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\StockViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -6046,6 +6050,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Site\brand.js" />
+    <Content Include="Scripts\Site\cargo.js" />
     <Content Include="Scripts\Site\category.js" />
     <Content Include="Scripts\Site\company.js" />
     <Content Include="Scripts\Site\fake-store.js" />
@@ -6055,9 +6060,13 @@
     <Content Include="Scripts\Site\ticket-paginate.js" />
     <Content Include="Scripts\Site\ticket-view.js" />
     <Content Include="Scripts\Site\ticket.js" />
-    <Content Include="Scripts\Site\trendyol-product.js" />
     <Content Include="Scripts\Site\trendyol-category.js" />
     <Content Include="Scripts\Site\trendyol-brand.js" />
+    <Content Include="Scripts\Site\Trendyol\create-product.js" />
+    <Content Include="Scripts\Site\Trendyol\get-product.js" />
+    <Content Include="Scripts\Site\Trendyol\product-categories.js" />
+    <Content Include="Scripts\Site\Trendyol\suplier-addresses.js" />
+    <Content Include="Scripts\Site\Trendyol\update-product.js" />
     <Content Include="Scripts\Site\unit.js" />
     <Content Include="Styles\site.css" />
     <Content Include="Web.config" />
@@ -6090,11 +6099,19 @@
     <Content Include="Views\Trendyol\Index.cshtml" />
     <Content Include="Views\FakeStore\Index.cshtml" />
     <Content Include="Views\Trendyol\Products.cshtml" />
+    <Content Include="Views\Trendyol\CreateProducts.cshtml" />
+    <Content Include="Views\Trendyol\SupliersAddresses.cshtml" />
+    <Content Include="Views\Trendyol\Brands.cshtml" />
+    <Content Include="Views\Trendyol\ProductCategories.cshtml" />
+    <Content Include="Views\Cargo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\Brands\" />
     <Folder Include="Files\Products\" />
+    <Folder Include="Files\TrendyolImages\" />
+    <Folder Include="Views\File\" />
+    <Folder Include="Views\IntegratorAuth\" />
     <Folder Include="Views\Tags\" />
     <Folder Include="Views\TicketProduct\" />
   </ItemGroup>
